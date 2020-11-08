@@ -10,5 +10,5 @@ The file in the examplerun fin in the vignette will go through step-by-step an e
 To install this package through use devtools:
 
 ```r
-devtools::install_github("huatengh/CoExpansionValidation", upgrade_dependencies = FALSE)
+devtools::install_github("huatengh/CoExpansionValidation", upgrade_dependencies = TRUE)
 ```
