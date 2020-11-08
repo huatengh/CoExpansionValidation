@@ -30,8 +30,6 @@ external programs that need to be installed before running:
  
 # __1.Generating A Test Dataset__  
   
-## 1) Generate divergent time for species  
-  
 ### i) Determine the number of co-expansion events  
   
 Two options:  
