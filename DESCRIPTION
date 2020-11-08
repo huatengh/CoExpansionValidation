@@ -1,0 +1,21 @@
+Package: CoExpansionValidation
+Type: Package
+Title: A package for validating co-expansion estimation
+Version: 0.1.0
+Author: Huateng Huang
+Maintainer: The package maintainer <huanghuateng@snnu.edu.cn>
+Description: This is a package for 
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
+Imports:
+	stringr (>= 1.4.0),
+	parallel (>= 4.0.0)
+RoxygenNote: 7.1.1
