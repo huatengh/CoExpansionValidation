@@ -12,23 +12,8 @@ To install this package through use devtools:
 ```r
 devtools::install_github("huatengh/CoExpansionValidation", upgrade_dependencies = TRUE)
 ```
----
-title: "Example run of CoExpansionValidation"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Example run of CoExpansionValidation}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-This is a markdown file showing how to use the CoExpansionValidation R package to testing the power of genetic datasets for detecting co-expansion events across species.  
+This  file shows how to use the CoExpansionValidation R package to testing the power of genetic datasets for detecting co-expansion events across species.  
 
 Tests of synchronous community expansion are commonly conducted using hierarchical Approximate Bayesian Computation (hABC), a statistical framework for inferring the degree of concordance across species. However, this framework is often used without demonstrating adequate performance.
 
