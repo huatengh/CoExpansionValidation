@@ -172,7 +172,7 @@ conf<-par_to_config(bayessc_par_file,species,nloci,gen)
 #run BayeSSC with the configuration table
 simulatedobs<-runbayeSSC_with_conf(BayeSSCallocation = path_to_bayessc,conf = conf,prefix = 'partemp',species.assignment = species.assignment,exp.time = exp.time,intern=TRUE)
 ```
-### iv) calculate hyperstats with hBaySSC 
+### iv) calculate hyperstats (hBaySSC) 
      
 We calculate hyperstats from the "observed" statistics. In our paper, this step was performed with [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC), but it depends on python 2.X which is no longer supported. This package provides a conversion of the code to R. Here, we need
 
