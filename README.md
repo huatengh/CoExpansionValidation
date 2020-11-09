@@ -237,6 +237,12 @@ conf<-conf
 #running ABC simulation
 reference.table<-ABC_simulation_with_conf(npod=npod,conf=conf,time.range=time.range,buffer=buffer,concentrationscale=concentrationscale,concentrationShape=concentrationShape,BayeSSCallocation=path_to_bayessc,prefix='temp',do.parallel=2,write.reference.file = F)
 
+# can set the write.reference.file = T, simulated sum stats will be append to a file named prefix_reference_table
+# useful for simulating large number of replicates
+# note that if write.reference.file = T, the function does not return the simulated data
+# just the path to the result file
+
+
 #the package comes with a toy example of reference.table
 colnames(reference.table)
 head(reference.table[,1:5])
