@@ -6,6 +6,14 @@ Tests of synchronous community expansion are commonly conducted using hierarchic
 Below we will show how to use the __CoExpansionValidation__ R package to testing the power of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in a empirical study, many replicates of pseudo-observed datasets needs to be generated for inference.
 
 
+## __Pre-requisite__
+  
+external programs that need to be installed before running:
+  
+ *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/) 
+ *  [msReject module in msBayes](http://msbayes.sourceforge.net/) 
+
+The BayeSSC is used for simulation, and msReject is used for inference. While functions in this package does not directly use [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC), steps of hyperstat calculation and running msReject are set to be identical to [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC). Future development will expand on other types of summary statistics.
 
 To install this package using devtools:
 
@@ -19,12 +27,7 @@ library(CoExpansionValidation)
 options(stringsAsFactors = F)
 ```
 
-## __Pre-requisite__
-  
-external programs that need to be installed before running:
-  
- *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/) 
- *  [msReject module in msBayes](http://msbayes.sourceforge.net/) 
+
  
 ## __1.Generating a pseudo-observed dataset__  
   
@@ -101,10 +104,10 @@ Ne                  | The Effective population size
 popratio            | The ratio between ancestral and current population size, <1 for expansion and >1 for shrinkage 
 eventtime.generation(4) | The time of the historical event in unit of generation(optional)
 
-  (1):species can appear in multiple rows if having multiple types of loci; using one row for one locus at a time works as well. However, all loci in one species share the same generation time, population size and expansion/shrinkage history. For these columns, function below will only read  from the first row of a species.  
-  (2):  mutation rate (and population size, and other number columns) can take BayeSCC-style prior distributions. For example, {U:1,299} for uniform distribution between 1 and 299. see [BayeSCC webpage](https://web.stanford.edu/group/hadlylab/ssc/index.html#IO) for details.  
-  (3):generation length needs to be in the same unit as the time range and buffer provided before. That is, if MYA was used, then here would need the generation time in unit of million years.  
-  (4):optional, if not provided, will be calculated automatically with the generation time and previously simulated events' time.
+  (1): species can appear in multiple rows if having multiple types of loci; using one row for one locus at a time works as well. However, all loci in one species share the same generation time, population size and expansion/shrinkage history. For these columns, function below will only read  from the first row of a species.  
+  (2): mutation rate (and population size, and other number columns) can take BayeSCC-style prior distributions. For example, {U:1,299} for uniform distribution between 1 and 299. see [BayeSCC webpage](https://web.stanford.edu/group/hadlylab/ssc/index.html#IO) for details.  
+  (3): generation length needs to be in the same unit as the time range and buffer provided before. That is, if MYA was used, then here would need the generation time in unit of million years.  
+  (4): optional, if not provided, will be calculated automatically with the generation time and previously simulated events' time.
 
 ```{r run BayeSCC from a configuration file}
 path_to_bayessc<-"BayeSSC.exe" #windows version, linux or mac starts with ./
