@@ -187,8 +187,8 @@ Following code will calcualte hyperstats and write it out to a file that can be 
 
 ```{r hyperstats from hBayeSSC}
 #if you write the observed summary stats into a file previously
-obsfile<-"temp_obs_file"
-simulatedobs<-read.table(obsfile,sep="\t",header=T,stringsAsFactors = F)
+#obsfile<-"temp_obs_file"
+#simulatedobs<-read.table(obsfile,sep="\t",header=T,stringsAsFactors = F)
 
 #calculate hyperstat across all loci
 hyperstat<-calculate_hyperstat(simulatedobs)
