@@ -9,16 +9,16 @@ generate_coevent_number_dirichlet(species, alpha, maxevent = NA)
 \arguments{
 \item{species}{A vector of species names}
 
-\item{alpha}{The parameter alpha for the dirichlet process}
+\item{alpha}{A numeric. The parameter alpha for the dirichlet process}
 
-\item{maxevent}{The default is NA. User can specified the maximum number of event.}
+\item{maxevent}{An integer for the maximum number of event allowed. The default is NA-- no limits on the maximum number of events.}
 }
 \value{
-A list, the length of which is equal to the number of event. Each element of the list is a vector of species names assigned to the event
+A list, the length of which is equal to the number of events. Each element of the list is a vector of species names assigned to the event
 }
 \description{
 This function puts species into coexpansion events according to dirichlet process.
 It will go through the list of species one by one, and determine whether each one should
-be assigned to existing events or to a new event. The probability determined by the alpha
+be assigned to a existing event or to a new event, with probabilities determined by the alpha
 parameter.
 }

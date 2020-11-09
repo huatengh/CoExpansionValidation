@@ -9,14 +9,14 @@ assign_species_to_events(species, nco.events, even = F)
 \arguments{
 \item{species}{A vector of species names, integers are treated as characters}
 
-\item{nco.events}{The number of co-expansion events}
+\item{nco.events}{Integer. The number of co-expansion events}
 
-\item{even}{The default is to assign species randomly. IF \code{TRUE}, will spread species evenly}
+\item{even}{\code{TRUE} or \code{FALSE}(Default). The default is to assign species randomly. IF \code{TRUE}, will spread species evenly acrosss events}
 }
 \value{
-A list, the length of which is equal to the number of event. Each element of the list is a vector of species names assigned to the event
+A list, the length of which is equal to the number of events. Each element of the list is a vector of species names assigned to the event.
 }
 \description{
-This function puts species into coexpansion events randomly or evenly
+This function puts species into co-expansion events randomly or evenly
 The number of co-expansion events is specified by the user
 }

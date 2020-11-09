@@ -7,11 +7,11 @@
 calculate_hyperstat(obs, hbayessclike = T, col = NULL)
 }
 \arguments{
-\item{obs}{A data frame containing the BayeSSC simulated stats}
+\item{obs}{A data frame containing the BayeSSC simulated summary statistics}
 
-\item{hbayessclike}{\code{TRUE} or \code{FALSE}. If \code{TRUE}, directly calculte the hyperstat across all locus in all species. If \code{FALSE}, still need develop}
+\item{hbayessclike}{\code{TRUE} (Default) or \code{FALSE}. If \code{TRUE}, directly calculte the hyperstat across all locus in all species. If \code{FALSE}, still need develop}
 
-\item{col}{A character vector containing the names of columns for hyperstat calculation. Currently this parameter has no use}
+\item{col}{A character vector providing the names of columns for hyperstat calculation. Currently this parameter is not in use.}
 }
 \value{
 A data frame containing the calculated hyperstats

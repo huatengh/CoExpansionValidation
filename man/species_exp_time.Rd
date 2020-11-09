@@ -12,7 +12,7 @@ species_exp_time(species.assignment, exp.time)
 \item{exp.time}{The time of the co-expansion events}
 }
 \value{
-A numeric vector containing the expansion time for each species.
+A numeric vector containing the expansion time for each species. The names of the vector are species name.
 }
 \description{
 A short function for get expansion time for each species
