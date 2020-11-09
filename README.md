@@ -6,7 +6,7 @@ Tests of synchronous community expansion are commonly conducted using hierarchic
 Below we will show how to use this __CoExpansionValidation__ R package to assess the performance of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in a empirical setting, many replicates of pseudo-observed datasets needs to be generated for inference.
 
 
-## __Pre-requisite__
+## __Installation__
   
 external programs that need to be installed before running:
   
