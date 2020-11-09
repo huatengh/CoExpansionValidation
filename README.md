@@ -8,14 +8,12 @@ Below we will show how to use the CoExpansionValidation R package to testing the
 To install this package through use devtools:
 
 ```r
-devtools::install_github("huatengh/CoExpansionValidation")
+devtools::install_github("huatengh/CoExpansionValidation",build_vignettes = TRUE)
 ```
 
 
 ```{r setup}
 library(CoExpansionValidation)
-#library(devtools)
-#load_all()
 options(stringsAsFactors = F)
 ```
 
@@ -26,17 +24,17 @@ external programs that need to be installed before running:
  *  [Python 2.x](https://www.python.org/) >= 2.4   
  *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/)  
  *  [hBayeSSC.py](https://github.com/UH-Bioinformatics/hBayeSSC)  
- *  [msReject]  
+ *  [msReject module in msBayes](http://msbayes.sourceforge.net/) 
  
-# __1.Generating A Test Dataset__  
+## __1.Generating a pseudo-observed dataset__  
   
 ### i) Determine the number of co-expansion events  
   
 Two options:  
 
-* user specifies it along with the number of species and assign species to the events randomly or evenly:
+* user specifies it along with a list of species and assign species to the events randomly or evenly:
 ```{r specify the number of co-expansion events}
-species<-1:10 # or a vector of species names
+species<-1:10 # or a vector of species names, can be characters
 coevents<-2
 #assigning species randomly
 species.assignment<-assign_species_to_events(species = species,nco.events = coevents,even = F)
@@ -46,7 +44,7 @@ species.assignment<-assign_species_to_events(species = species,nco.events = coev
 species.assignment
 ```
   
-* user specifies the number of species and the _alpha_ for Dirichlet process, and simulate the number of co-expansion events
+* user specifies the species name and the _alpha_ for Dirichlet process, and simulate the number of co-expansion events
 ```{r simulate the number of co-expansion events}
 species<-1:10
 alpha<-1.1
@@ -55,9 +53,9 @@ species.assignment
 coevents<-length(species.assignment)
 ```
 
-### ii) Generating the expansion time for coexpansion events
+### ii) Sampling the time for co-expansion events
 
-User can specify the time for each event (time from present), or randomly sample from a time range. Buffer can be added around a event, so co-expansion events are at least certain generations away from each other. No required unit for time and buffer--below we are going to specify the generation time to turn them into number of generations.
+User can specify the time for each event (time from present), or randomly sample the time from a range. Buffer can be added around co-expansion events, such that they are at least certain generations away from each other. No requirement on the unit of time and buffer--below user can provide species' generation time to turn them into number of generations.
 
 ```{r generate the expansion time}
 exp.time<-c(30000,50000) 
