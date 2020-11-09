@@ -3,7 +3,7 @@ A R package for validating ABC co-expansion inference
 
 Tests of synchronous community expansion are commonly conducted using hierarchical Approximate Bayesian Computation (hABC), a statistical framework for inferring the degree of concordance across species. However, this framework is often used without demonstrating adequate performance.
 
-Below we will show how to use this __CoExpansionValidation__ R package to assess the performance of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in a empirical setting, many replicates of pseudo-observed datasets needs to be generated for inference.
+Below we will show how to use this __CoExpansionValidation__ R package to assess the performance of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in an empirical setting, many replicates of pseudo-observed datasets need to be generated for inference.
 
 
 ## __Installation__
