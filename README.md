@@ -3,7 +3,7 @@ A R package for validating ABC co-expansion inference
 
 Tests of synchronous community expansion are commonly conducted using hierarchical Approximate Bayesian Computation (hABC), a statistical framework for inferring the degree of concordance across species. However, this framework is often used without demonstrating adequate performance.
 
-Below we will show how to use the __CoExpansionValidation__ R package to testing the power of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in a empirical study, many replicates of pseudo-observed datasets needs to be generated for inference.
+Below we will show how to use this __CoExpansionValidation__ R package to assess the performance of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in a empirical setting, many replicates of pseudo-observed datasets needs to be generated for inference.
 
 
 ## __Pre-requisite__
@@ -170,7 +170,7 @@ gen<-1 # or can be a vector with generation time for each species
 #extract information from the par file to a configuration table
 conf<-par_to_config(bayessc_par_file,species,nloci,gen)
 #run BayeSSC with the configuration table
-#simulatedobs<-runbayeSSC_with_conf(BayeSSCallocation = path_to_bayessc,conf = conf,prefix = 'partemp',species.assignment = species.assignment,exp.time = exp.time,intern=TRUE)
+simulatedobs<-runbayeSSC_with_conf(BayeSSCallocation = path_to_bayessc,conf = conf,prefix = 'partemp',species.assignment = species.assignment,exp.time = exp.time,intern=TRUE)
 ```
 ### iv) calculate hyperstats with hBaySSC 
      
