@@ -1,11 +1,11 @@
 #' Extract information from a par file
 #'
-#' A function extracting informatio from a par file and put it into a configuration data frame. Note that because we only consider one historical expansion event, the par file format is semi-fixed, and we provide BayeSSCtemplate.par, a file to use as a template
+#' A function extracting information from a par file and put it into a configuration data frame. Note that because we only consider one historical expansion event, the par file format is semi-fixed, and a template par file is included in the package for using as a template.
 #'
-#' @param bayessc_par_file A string showing the file name of the .par file (including the path)
+#' @param bayessc_par_file A character string providing the path to the .par file
 #' @param species A character vector containing the species names
-#' @param nloci A integer for the number of loci to simulate for each species
-#' @param gen A vector of integers containing the generation time for each species. If it is just one number, assuming the same generation time for all species. If it is \code{NA}(Default), assuming one generation per time unit
+#' @param nloci A integer. The number of loci to simulate for each species
+#' @param gen A vector of integers containing the generation time for each species. If it is of length 1, function will assume the same generation time for all species. If it is \code{NA}(Default), assuming one generation per time unit.
 #' @return A configuration data frame
 #' @export
 par_to_config<-function(bayessc_par_file,species,nloci,gen=NA){

@@ -4,7 +4,7 @@
 #'
 #' @param species.assignment a list showing the species-to-event assignment
 #' @param exp.time The time of the co-expansion events
-#' @return A numeric vector containing the expansion time for each species.
+#' @return A numeric vector containing the expansion time for each species. The names of the vector are species name.
 #' @seealso \code{\link[CoExpansionValidation]{assign_species_to_events}}
 #' @export
 species_exp_time<-function(species.assignment,exp.time){

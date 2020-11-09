@@ -1,21 +1,21 @@
-#' Do ABC simulation with configuration table
+#' Do ABC simulation with a configuration table
 #'
-#' A function for doing abc simulation with a configuration table. see example in vignette for required columns in the table
+#' A function for doing abc simulation with a configuration table. see Readme on github for required columns in the table
 #'
 #' @param npod An integer, the number of simulation replicates
 #' @param conf A data frame with configurations
 #' @param time.range A vector containing two numeric elements specifying the minimal and maximum event time.
 #' @param buffer The minimal amount of time separating two events. The default is 0, when events' time are sampled randomly
-#' @param concentrationscale A numeric. The \code{scale} for gamma distribution. See 'Details'
-#' @param concentrationShape A numeric. The \code{shape} for gamma distribution. See 'Details'
-#' @param prefix BayeSSC will generate some intermediate files, this function will create temporary folders for storing these files. One folder for one row in the configuration table, and the folder is named as \code{prefix}\code{simulation replicates}_row number.If folders with the same name already exist, user will be prompt for choosing another \code{prefix} or overwrite the folders.
+#' @param concentrationscale A numeric. The \code{scale} for the gamma distribution. See 'Details'
+#' @param concentrationShape A numeric. The \code{shape} for the gamma distribution. See 'Details'
+#' @param prefix BayeSSC will generate many intermediate files, this function will create temporary folders for storing these files. One folder for one row in the configuration table, and the folders are named as \code{prefix}\code{simulation replicates}_row number.If folders with the same name already exist, user will be prompt for providing another \code{prefix} or overwriting the folders.
 #' @param BayeSSCallocation A character string providing the location of the BayeSSC executable (including the file name)
-#' @param do.parallel A integer for the number of parallel threads to use. if equals \code{1},no parallel execution.
-#' @param write.reference.file \code{TRUE} or \code{FALSE}(Default). If \code{TRUE}, the simulated hyperstat will be append to a file \code{prefix}_reference_table. Useful for running large number of replicates.If \code{False}, the simulated hyperstat will be returned as a data frame
+#' @param do.parallel A integer for the number of parallel threads to use. if equals \code{1},no parallel execution. The parallel R package required
+#' @param write.reference.file \code{TRUE} or \code{FALSE}(Default). If \code{TRUE}, the simulated hyperstat will be append to a file \code{prefix}_reference_table. Useful for running large number of replicates.If \code{False}, the simulated hyperstat will be collected and returned as a data frame
 #'
-#' @return If \code{write.reference.file} is \code{FALSE}, this function returns a data frame containing the simulated hyperstats. The first column is 'uid', the replicates number, the second column is the number of events, and the third column is the total number of species. Following are columns for the "real" expansion time for each species in the simulation, and then, the columns of hyperstats.If \code{write.reference.file} is \code{TRUE}, this function returns a character string "finished" after finish all the replicates.
+#' @return If \code{write.reference.file} is \code{FALSE}, this function returns a data frame containing the simulated hyperstats. The first column is 'uid' (\code{prefix}+the replicates number), the second column is the number of events, and the third column is the total number of species. Following are columns of the "real" expansion time for each species in the simulation, and then, the columns of hyperstats.If \code{write.reference.file} is \code{TRUE}, this function returns a character string providing the path to the reference file.
 #'
-#' @details For the prior on expansion event, hBayeSSC used a flat distribution where 1-nspecies expanded together are simulated with equal frequency. In the paper, we used a gamma distribution for the alpha parameter of the dirichelete process, similar to [PyMsbayes](http://joaks1.github.io/PyMsBayes/). User need to select the two parameters for gamma distribution: concentrationShape and consentrationScale. User can looked into the [prior selection in PyMsbayes](http://joaks1.github.io/PyMsBayes/tutorials/selecting-priors.html) for how to select these two parameters.
+#' @details For the prior on the number of co-expansion events, hBayeSSC used a flat distribution. In the paper, we adopt the [PyMsbayes-style](http://joaks1.github.io/PyMsBayes/) prior: a gamma distribution for the alpha parameter of the dirichelete process. User need to select the two parameters for gamma distribution: concentrationShape and consentrationScale. Check [prior selection in PyMsbayes](http://joaks1.github.io/PyMsBayes/tutorials/selecting-priors.html) for how to select these two parameters.
 #'
 #' @export
 ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationscale,concentrationShape,prefix='temp',BayeSSCallocation,do.parallel=1,write.reference.file=F){
@@ -39,7 +39,7 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
     if(write.reference.file==T){
       hsfile<-paste0(prefix,"_reference_table")
       cat(paste(simulatehyperstat,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = T)
-      return("finished")
+      return(hsfile)
     }else{
       return(simulatehyperstat)
     }
@@ -57,6 +57,6 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
   if(write.reference.file==F){
     x<-t(x)
     return(x)
-  }else{return("finished")}
+  }else{x[1]}
 
 }

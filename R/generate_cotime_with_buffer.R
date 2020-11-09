@@ -3,11 +3,12 @@
 #' This function randomly draw events' time from a time range.
 #' User can specify the minimal time length (buffer) between events
 #'
-#' @param time.range A vector containing two numeric elements specifying the minimal and maximum event time.
-#' @param nco.events The number of coexpansion events. See 'Details'.
-#' @param buffer The minimal amount of time separating two events. The default is 0, when events' time are sampled randomly
-#' @details Note that the \code{buffer} is the time length on each side of a expansion time. Also, if the \code{buffer} is non-zero,the maximum number of events (max \code{nco.event})=\code{time.range}/\code{buffer} +2. However, if \code{nco.events} is close to the it maximum (even if not exceeding), this function might take a while to find a set of events time that are at least buffer apart from each other.
-#' @return A numeric vector of the sampled expansion time
+#' @param time.range A numeric vector of length 2 giving the minimal and maximum time.
+#' @param nco.events An integer. The number of co-expansion events. See 'Details'.
+#' @param buffer A numeric. The minimal amount of time separating two events. The default is 0, when events' time are sampled randomly
+#'
+#' @details Note that the \code{buffer} is the time length on each side of a expansion event. If the \code{buffer} is non-zero,the maximum number of events (max \code{nco.event})=\code{time.range}/\code{buffer} +2. However, for a large \code{nco.events}, even if it does not exceed the maximum, this function might take a while to find a set of time that are at least \code{buffer} apart from each other.
+#' @return A numeric vector of length \code{nco.events} containing the sampled expansion time
 #'
 #' @export
 generate_cotime_with_buffer<-function(time.range,nco.events,buffer=0){

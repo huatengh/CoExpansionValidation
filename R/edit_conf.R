@@ -1,10 +1,10 @@
 #' Sampling the configuration table for each species
 #'
-#' A function for randomly draw values from distributions included in the configuration table. BayeSSC can take prior distribution for parameters instead of fixed values. However, loci of the same species need to share the same generation time, effective population size and expansion history. So these values need to be fixed for each species instead of letting BayeSSC to draw a difference sample for each locus.
+#' A function for randomly draw values from prior distributions in the configuration table. BayeSSC can take prior distribution for parameters as well as fixed values. However, loci of the same species need to share the same generation time, effective population size and expansion history. So these values need to be fixed for each species instead of letting BayeSSC to draw a different sample for each locus.
 #'
 #' @param conf A data frame with configurations
-#' @param col A character vector containing the columns for which the value need to be sampled from distributions. The default contains three columns in the \code{conf} data frame: "gen"(generation time), "Ne"(effective population size), and "popratio"(the population expansion ratio)
-#' @return A configuration data frame with randomly sampled values
+#' @param col A character vector containing the name of the columns, for which values need to be sampled from prior distributions. The default contains three columns in the \code{conf} data frame: "gen"(generation time), "Ne"(effective population size), and "popratio"(the population expansion ratio)
+#' @return A configuration data frame with randomly sampled values from prior distribution
 #' @export
 edit_conf<-function(conf,col=c("gen","Ne","popratio")){
   x<-conf[,c("species",col)]

@@ -1,4 +1,4 @@
-#' @export
+
 edit_parfile_eventtime<-function(templateparfilename,outparfilename,eventtime,overwrite=T){
   templateparfile<- scan(file = templateparfilename,what = 'character',sep = "\n")
   lline<-grep("1 historical event",templateparfile)

@@ -1,16 +1,16 @@
 #' Run BayeSCC with a configuration table
 #'
-#' A wrapper function for running BayeSCC with a configuration table. See the example in the vignettes for the configurations needed.
+#' A wrapper function for running BayeSCC with a configuration table. See the example in the vignettes for requirements on the configuration table.
 #'
-#' @param BayeSSCallocation A character string providing the location of the BayeSSC executable (including the file name)
-#' @param conf A data.frame with configurations
-#' @param prefix BayeSSC will generate some intermediate files, this function will create temporary folders for storing these files. One folder for one row in the configuration table, and the folder is named as \code{prefix}_row number.If folders with the same name already exist, user will be prompt for choosing another \code{prefix} or overwrite the folders.
+#' @param BayeSSCallocation A character string providing the path to the BayeSSC executable (including the file name itself)
+#' @param conf A data frame with configurations
+#' @param prefix A character string. BayeSSC will generate many intermediate files. This function will create temporary folders for storing these files. One folder for one row in the configuration table, and the folder will be named as \code{prefix}_row number.If folders with the same name already exist, user will be prompt for choosing another \code{prefix} or overwriting the folders.
 #' @param species.assignment A list showing species-to-event assignment. This can be \code{NULL},if \code{eventtime.generation} is included as a column in the \code{conf} data frame.
 #' @param exp.time A numeric vector with the events time.This can be \code{NULL},if \code{eventtime.generation} is included as a column in the \code{conf} data frame.
-#' @param intern Default is \code{TRUE}: the screen output of BayeSSC will be suppressed. If \code{FALSE}, all screen output of BayeSSC will be shown
+#' @param intern \code{TRUE}(Default) or \code{FALSE}: the screen output of BayeSSC will be suppressed by default. If \code{FALSE}, all screen output of BayeSSC will be shown.
 #' @param deletetempfolder \code{TRUE}(Default) or \code{FALSE}, whether the temporary folders for holding BayeSCC's intermediate files will be deleted after running
 #' @param write.conf.to.file \code{TRUE} or \code{FALSE}(Default), whether to write the sampled configuration to a file. If \code{TRUE}, the file name will be \code{prefix}_conf_file
-#' @param write.obs.to.file \code{TRUE} or \code{FALSE}(Default), whether to write the observation data simulated by BayeSSC to a file. If \code{TRUE}, the file name will be \code{prefix}_obs_file
+#' @param write.obs.to.file \code{TRUE} or \code{FALSE}(Default), whether to write the observation data simulated by BayeSSC to a file. If \code{TRUE}, the file will be named \code{prefix}_obs_file
 #'
 #' @return A data frame storing the the observation summary statistics simulated BayeSSC
 #'

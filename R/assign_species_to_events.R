@@ -1,12 +1,12 @@
 #' Assign species to events
 #'
-#' This function puts species into coexpansion events randomly or evenly
+#' This function puts species into co-expansion events randomly or evenly
 #' The number of co-expansion events is specified by the user
 #'
 #' @param species A vector of species names, integers are treated as characters
-#' @param nco.events The number of co-expansion events
-#' @param even The default is to assign species randomly. IF \code{TRUE}, will spread species evenly
-#' @return A list, the length of which is equal to the number of event. Each element of the list is a vector of species names assigned to the event
+#' @param nco.events Integer. The number of co-expansion events
+#' @param even \code{TRUE} or \code{FALSE}(Default). The default is to assign species randomly. IF \code{TRUE}, will spread species evenly acrosss events
+#' @return A list, the length of which is equal to the number of events. Each element of the list is a vector of species names assigned to the event.
 #'
 #' @export
 assign_species_to_events<-function(species,nco.events,even=F){

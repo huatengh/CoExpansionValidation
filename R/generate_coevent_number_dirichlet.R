@@ -2,13 +2,13 @@
 #'
 #' This function puts species into coexpansion events according to dirichlet process.
 #' It will go through the list of species one by one, and determine whether each one should
-#' be assigned to existing events or to a new event. The probability determined by the alpha
+#' be assigned to a existing event or to a new event, with probabilities determined by the alpha
 #' parameter.
 #'
 #' @param species A vector of species names
-#' @param alpha The parameter alpha for the dirichlet process
-#' @param maxevent The default is NA. User can specified the maximum number of event.
-#' @return A list, the length of which is equal to the number of event. Each element of the list is a vector of species names assigned to the event
+#' @param alpha A numeric. The parameter alpha for the dirichlet process
+#' @param maxevent An integer for the maximum number of event allowed. The default is NA-- no limits on the maximum number of events.
+#' @return A list, the length of which is equal to the number of events. Each element of the list is a vector of species names assigned to the event
 #'
 #' @export
 generate_coevent_number_dirichlet<-function(species,alpha,maxevent=NA){
