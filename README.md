@@ -13,7 +13,7 @@ external programs that need to be installed before running:
  *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/) 
  *  [msReject module in msBayes](http://msbayes.sourceforge.net/) 
 
-The BayeSSC is used for simulation, and msReject is used for inference. While functions in this package does not directly use [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC), steps of hyperstat calculation and running msReject are set to be identical to [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC). Future development will expand on other types of summary statistics.
+The BayeSSC is used for simulation, and msReject is used for inference. While functions in this package do not directly use [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC), steps of hyperstat calculation and running msReject are set to be identical to [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC). Future development will expand on other types of summary statistics.
 
 To install this package using devtools:
 
