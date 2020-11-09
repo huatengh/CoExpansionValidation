@@ -3,9 +3,11 @@ A R package for validating ABC co-expansion inference
 
 Tests of synchronous community expansion are commonly conducted using hierarchical Approximate Bayesian Computation (hABC), a statistical framework for inferring the degree of concordance across species. However, this framework is often used without demonstrating adequate performance.
 
-Below we will show how to use the CoExpansionValidation R package to testing the power of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply these performance assessment in a empirical study, many replicates of pseudo-observed datasets are needed.   
+Below we will show how to use the CoExpansionValidation R package to testing the power of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in a empirical study, many replicates of pseudo-observed datasets needs to be generated for inference.
 
-To install this package through use devtools:
+
+
+To install this package using devtools:
 
 ```r
 devtools::install_github("huatengh/CoExpansionValidation",build_vignettes = TRUE)
@@ -17,13 +19,11 @@ library(CoExpansionValidation)
 options(stringsAsFactors = F)
 ```
 
-### __Pre-requisite__
+## __Pre-requisite__
   
 external programs that need to be installed before running:
   
- *  [Python 2.x](https://www.python.org/) >= 2.4   
- *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/)  
- *  [hBayeSSC.py](https://github.com/UH-Bioinformatics/hBayeSSC)  
+ *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/) 
  *  [msReject module in msBayes](http://msbayes.sourceforge.net/) 
  
 ## __1.Generating a pseudo-observed dataset__  
