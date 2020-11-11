@@ -35,7 +35,7 @@ options(stringsAsFactors = F)
   
 Two options:  
 
-* user specifies a list of species and assigns species to events randomly or evenly:  
+* user specifies the number of events and assigns species to events randomly or evenly:  
 
 ```{r specify the number of co-expansion events}
 species<-1:10 # or a vector of species names, can be characters
@@ -48,7 +48,7 @@ species.assignment<-assign_species_to_events(species = species,nco.events = coev
 species.assignment
 ```
   
-* user specifies the species' names and the _alpha_ for Dirichlet process, and simulate the number of co-expansion events  
+* user specifies the _alpha_ for Dirichlet process, and simulate the number of co-expansion events  
 
 ```{r simulate the number of co-expansion events}
 species<-1:10
