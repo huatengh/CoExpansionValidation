@@ -1,21 +1,21 @@
 # CoExpansionValidation
-A R package for validating ABC co-expansion inference 
+An R package for validating ABC co-expansion inference 
 
 Tests of synchronous community expansion are commonly conducted using hierarchical Approximate Bayesian Computation (hABC), a statistical framework for inferring the degree of concordance across species. However, this framework is often used without demonstrating adequate performance.
 
-Below we will show how to use this __CoExpansionValidation__ R package to assess the performance of genetic datasets for detecting co-expansion events across species. It will go through  an example step-by-step, showing how to generate one pseudo-observed dataset, and use ABC to "infer" the number of co-expansion events. Obviously, to apply this type of performance assessment in an empirical setting, many replicates of pseudo-observed datasets need to be generated for inference.
+Below we will show how to use this __CoExpansionValidation__ R package to assess genetic datasets' performance for detecting co-expansion events across species. It will go through an example step-by-step, showing how to generate one pseudo-observed dataset and use ABC to "infer" the number of co-expansion events. To apply this type of performance assessment in an empirical setting, many replicates of pseudo-observed datasets need to be generated for inference.
 
 
 ## __Installation__
   
-external programs that need to be installed before running:
+External programs that need to be installed before running:
   
  *  [BayeSSC - Serial Simcoal](http://www.stanford.edu/group/hadlylab/ssc/) 
  *  [msReject module in msBayes](http://msbayes.sourceforge.net/) 
 
 The BayeSSC is used for simulation, and msReject is used for inference. While functions in this package do not directly use [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC), steps of hyperstat calculation and running msReject are set to be identical to [hBayeSSC](https://github.com/UH-Bioinformatics/hBayeSSC). Future development will expand on other types of summary statistics.
 
-To install this package using devtools:
+To install this package, use devtools:
 
 ```r
 devtools::install_github("huatengh/CoExpansionValidation",build_vignettes = TRUE)
