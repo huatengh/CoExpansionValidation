@@ -67,7 +67,15 @@ User can provide the time for each event (time from present), or randomly sample
 # the coevents specified above
 exp.time<-c(30000,50000) 
 
-#randomly draw time from a range
+
+#randomly draw times from a range with a set distance apart
+time.range<-c(30000,50000)
+buffer<-5000
+first.event<-runif(min=time.range[1],max=time.range[2]-buffer*(coevents-1),n=1)
+exp.time<-first.event+buffer*c(0:(coevent-1))
+
+
+#randomly draw time from a range with minimal distance
 time.range<-c(30000,50000)
 buffer<-5000
 exp.time<-generate_cotime_with_buffer(time.range = time.range,nco.events =coevents,buffer =  buffer)
