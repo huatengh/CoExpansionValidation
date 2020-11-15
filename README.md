@@ -72,7 +72,7 @@ exp.time<-c(30000,50000)
 time.range<-c(30000,50000)
 buffer<-5000
 first.event<-runif(min=time.range[1],max=time.range[2]-buffer*(coevents-1),n=1)
-exp.time<-first.event+buffer*c(0:(coevent-1))
+exp.time<-first.event+buffer*c(0:(coevents-1))
 
 
 #randomly draw time from a range with minimal distance
