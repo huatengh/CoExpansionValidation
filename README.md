@@ -274,6 +274,19 @@ conf<-par_to_config(bayessc_par_file,species,nloci,gen)
 reference.table<-ABC_simulation_with_conf(npod=npod,conf=conf,time.range=time.range,buffer=buffer,concentrationscale=concentrationscale,concentrationShape=concentrationShape,BayeSSCallocation=path_to_bayessc,prefix='temp',do.parallel=2)
 
 ```
+To simulate with uniform prior on the number of co-expansion events
+
+  
+```{r ABC simulation with uniform prior on the number of co-expansion events}
+path_to_bayessc="BayeSSC.exe"
+time.range<-c(30000,50000)
+buffer<-500
+npod<-10
+conf<-conf
+#running ABC simulation
+reference.table<-ABC_simulation_uniform(npod=npod,conf=conf,time.range=time.range,buffer=buffer,BayeSSCallocation=path_to_bayessc,prefix='temp',do.parallel=2,write.reference.file = F)
+
+```
 
 ## __3.Generating Inference for Test Data__  
 
