@@ -39,5 +39,5 @@ If \code{write.reference.file} is \code{FALSE}, this function returns a data fra
 A function for doing abc simulation with a configuration table and uniform prior on the number of co-expansion events. see Readme on github for required columns in the table
 }
 \details{
-For the prior on the number of co-expansion events, this function offer users a choice to used a uniform distribution as in hBayeSSC
+For the prior on the number of co-expansion events, this function offers users a choice to use a uniform distribution as applied hBayeSSC
 }
