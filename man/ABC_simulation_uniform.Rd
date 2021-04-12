@@ -39,5 +39,5 @@ If \code{write.reference.file} is \code{FALSE}, this function returns a data fra
 A function for doing abc simulation with a configuration table and uniform prior on the number of co-expansion events. see Readme on github for required columns in the table
 }
 \details{
-For the prior on the number of co-expansion events, hBayeSSC used a flat distribution. In the paper, we adopt the [PyMsbayes-style](http://joaks1.github.io/PyMsBayes/) prior: a gamma distribution for the alpha parameter of the dirichelete process. User need to select the two parameters for gamma distribution: concentrationShape and consentrationScale. Check [prior selection in PyMsbayes](http://joaks1.github.io/PyMsBayes/tutorials/selecting-priors.html) for how to select these two parameters.
+For the prior on the number of co-expansion events, this function offer users a choice to used a uniform distribution as in hBayeSSC
 }

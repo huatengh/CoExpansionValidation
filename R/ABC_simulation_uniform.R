@@ -13,7 +13,7 @@
 #'
 #' @return If \code{write.reference.file} is \code{FALSE}, this function returns a data frame containing the simulated hyperstats. The first column is 'uid' (\code{prefix}+the replicates number), the second column is the number of events, and the third column is the total number of species. Following are columns of the "real" expansion time for each species in the simulation, and then, the columns of hyperstats.If \code{write.reference.file} is \code{TRUE}, this function returns a character string providing the path to the reference file.
 #'
-#' @details For the prior on the number of co-expansion events, hBayeSSC used a flat distribution. In the paper, we adopt the [PyMsbayes-style](http://joaks1.github.io/PyMsBayes/) prior: a gamma distribution for the alpha parameter of the dirichelete process. User need to select the two parameters for gamma distribution: concentrationShape and consentrationScale. Check [prior selection in PyMsbayes](http://joaks1.github.io/PyMsBayes/tutorials/selecting-priors.html) for how to select these two parameters.
+#' @details For the prior on the number of co-expansion events, this function offer users a choice to used a uniform distribution as in hBayeSSC
 #'
 #' @export
 ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',BayeSSCallocation,do.parallel=1,write.reference.file=F){
