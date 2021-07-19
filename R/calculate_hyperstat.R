@@ -3,7 +3,7 @@
 #' A function for calculating hyperstats from BayeSSC simulated stats. Here we calculate four hyperstats for each summary statistics: mean, variance, skewness and kurtosis as explained on https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Higher-order_statistics
 #'
 #' @param obs A data frame containing the BayeSSC simulated summary statistics
-#' @param hbayessclike \code{TRUE} (Default) or \code{FALSE}. If \code{TRUE}, directly calculte the hyperstat across all locus in all species. If \code{FALSE}, still need develop
+#' @param hbayessclike \code{TRUE} (Default) or \code{FALSE}. If \code{TRUE}, directly calculate the hyperstat across all locus in all species. If \code{FALSE}, still need develop
 #' @param col A character vector providing the names of columns for hyperstat calculation. Currently this parameter is not in use.
 #'
 #' @return A data frame containing the calculated hyperstats

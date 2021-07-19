@@ -1,6 +1,6 @@
 write_parfile<-function(confrow,tempfolder=NULL){
   parfile<-templateparfile
-  parfile[4]<-confrow$Ne
+  parfile[4]<-format(confrow$Ne,scientific = F)
   parfile[6]<-confrow$nsam
   l<-unlist(strsplit(parfile[13],split = ' '))
   l[5]<-confrow$popratio
