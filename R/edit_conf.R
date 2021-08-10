@@ -20,6 +20,10 @@ edit_conf<-function(conf,col=c("gen","Ne","popratio")){
       edited_conf[edited_conf$species==x$species[i],j]<-y
     }
   }
+  for(i in 1:dim(edited_conf)[2]){
+    if(colnames(edited_conf)[i]=="gamma")next;
+    edited_conf[,i]<-as.numeric(edited_conf[,i])
+  }
 
   return(edited_conf)
 }
