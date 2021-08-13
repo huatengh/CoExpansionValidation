@@ -17,13 +17,14 @@ assign_species_to_events<-function(species,nco.events,even=F){
   #if Even=TRUE, then spread species among divergence events evenly
   if(even==T){
     x<-nspecies/nco.events
-    for(i in 1:(nco.events-1)){
+    for(i in 1:nco.events){
       divevent[[i]]<-species[(floor(x*(i-1))+1):floor(x*i)]
+      if(i==nco.events)divevent[[i]]<-species[(floor(x*(i-1))+1):nspecies]
       #print(i)
       #print(divevent)
       #scan()
     }
-    divevent[[i+1]]<-species[(floor(x*i)+1):nspecies]
+
     return(divevent)
   }
 
