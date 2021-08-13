@@ -32,6 +32,7 @@ generate_cotime_with_buffer<-function(time.range,nco.events,buffer=0){
     divtime[1]<-runif(min=time.range[1],max=time.range[2],n = 1)
     bufferzone<-matrix(c(max(time.range[1],divtime[1]-buffer),min(time.range[2],divtime[1]+buffer)),nrow = 1)
     n<-1
+    if(nco.events==1)break
     for(i in 2:nco.events){
       timelength<-time.range[2]-time.range[1]-sum(bufferzone[,2]-bufferzone[,1])
       if(timelength<=0){break;}
@@ -58,7 +59,7 @@ generate_cotime_with_buffer<-function(time.range,nco.events,buffer=0){
       bufferzone<-newbufferzone
       n<-n+1
     }
-    if(n<nco.events)print("sampling failed, trying another time\n")
+    if(n<nco.events)print("sampling failed, doing the resampling again\n")
   }
   return(divtime)
 }
