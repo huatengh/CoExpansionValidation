@@ -51,6 +51,7 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
     data("reference.table")
     colheads<-c("uid","nevent","nspecies")
     colheads<-c(colheads,paste0("species",1:nspecies),colnames(reference.table)[grep("haptypes_Mean",colnames(reference.table)):dim(reference.table)[2]])
+    hsfile<-paste0(prefix,"_reference_table")
     cat(paste(colheads,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = F)
   }
 
