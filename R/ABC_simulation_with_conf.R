@@ -45,6 +45,15 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
     }
   }
 
+  if(write.reference.file==T){
+    species<-as.character(unique(conf$species))
+    nspecies<-length(species)
+    data("reference.table")
+    colheads<-c("uid","nevent","nspecies")
+    colheads<-c(colheads,paste0("species",1:nspecies),colnames(reference.table)[grep("haptypes_Mean",colnames(reference.table)):dim(reference.table)[2]])
+    cat(paste(colheads,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = F)
+  }
+
   if(do.parallel==1){
     x<-sapply(1:npod,function(i)fx(i,conf,time.range,buffer,concentrationscale,concentrationShape,prefix,BayeSSCallocation,write.reference.file))
   }else{
