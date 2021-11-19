@@ -56,6 +56,7 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
   if(do.parallel==1){
     x<-sapply(1:npod,function(i)fx(i,conf,time.range,buffer,prefix,BayeSSCallocation,write.reference.file))
   }else{
+    library(parallel)
     cluster <- parallel::makeCluster(do.parallel)
     parallel::clusterExport(cl = cluster, varlist=ls("package:CoExpansionValidation"))
     x<-parallel::parSapply(cluster, X = 1:npod, fx, conf,time.range,buffer,prefix,BayeSSCallocation,write.reference.file)
