@@ -45,14 +45,14 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
   }
   if(write.reference.file==T){
     species<-as.character(unique(conf$species))
-    nspecies<-length(species)
+    nspecies<-length(species)  
     data("reference.table")
     colheads<-c("uid","nevent","nspecies")
     colheads<-c(colheads,paste0("species",1:nspecies),colnames(reference.table)[grep("haptypes_Mean",colnames(reference.table)):dim(reference.table)[2]])
     hsfile<-paste0(prefix,"_reference_table")
     cat(paste(colheads,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = F)
   }
-
+  
   if(do.parallel==1){
     x<-sapply(1:npod,function(i)fx(i,conf,time.range,buffer,prefix,BayeSSCallocation,write.reference.file))
     if(write.reference.file==T){
@@ -60,6 +60,7 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
       unlink(x)
       hsfile<-paste0(prefix,"_reference_table")
       cat(paste0(files,collapse = "\n"),file = hsfile,append = T)
+      cat("\n",file = hsfile,append = T)
       x<-hsfile
     }
   }else{
@@ -71,28 +72,31 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
       end.podn<-min(file.collect.rep*file.collect.inc,npod)
       cluster <- parallel::makeCluster(do.parallel)
       parallel::clusterExport(cl = cluster, varlist=ls("package:CoExpansionValidation"))
-      x<-parallel::parSapply(cluster, X = start.podn:end.podn, fx, conf,time.range,buffer,concentrationscale,concentrationShape,prefix,BayeSSCallocation,write.reference.file)
+      x<-parallel::parSapply(cluster, X = start.podn:end.podn, fx, conf,time.range,buffer,prefix,BayeSSCallocation,write.reference.file)
       parallel::stopCluster(cluster)
       if(write.reference.file==T){
         files<-sapply(x,function(fname){l<-unlist(scan(fname,what="character",sep="\n"))})
         unlink(x)
         hsfile<-paste0(prefix,"_reference_table")
         cat(paste0(files,collapse = "\n"),file = hsfile,append = T)
+        cat("\n",file = hsfile,append = T)
         x<-hsfile
       }else{
         if(file.collect.rep==1){
           y<-x
         }else{
           y<-cbind(y,x)
+          #print(dim(y))
         }
       }
       #print("collected one set of result\n")
     }
     if(write.reference.file==F){x<-y}
+    
   }
   if(write.reference.file==F){
     x<-t(x)
     return(x)
   }else{x[1]}
-
+  
 }

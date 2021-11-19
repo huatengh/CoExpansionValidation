@@ -38,7 +38,7 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
     simulatehyperstat<-c(a,simulatehyperstat)
     if(write.reference.file==T){
       hsfile<-paste0(prefix,"_reference_table",i)
-      cat(paste(simulatehyperstat,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = T)
+      cat(paste(simulatehyperstat,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = F)
       return(hsfile)
     }else{
       return(simulatehyperstat)
