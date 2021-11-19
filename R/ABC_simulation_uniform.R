@@ -36,8 +36,8 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
     a<-c(a,species.time)
     simulatehyperstat<-c(a,simulatehyperstat)
     if(write.reference.file==T){
-      hsfile<-paste0(prefix,"_reference_table")
-      cat(paste(simulatehyperstat,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = T)
+      hsfile<-paste0(prefix,"_reference_table_",i)
+      cat(paste(simulatehyperstat,sep='',collapse = "\t"),"\n",sep='',file = hsfile,append = F)
       return(hsfile)
     }else{
       return(simulatehyperstat)
@@ -55,13 +55,40 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
 
   if(do.parallel==1){
     x<-sapply(1:npod,function(i)fx(i,conf,time.range,buffer,prefix,BayeSSCallocation,write.reference.file))
+    if(write.reference.file==T){
+      files<-sapply(x,function(fname){l<-unlist(scan(fname,what="character",sep="\n"))})
+      unlink(x)
+      hsfile<-paste0(prefix,"_reference_table")
+      cat(paste0(files,collapse = "\n"),file = hsfile,append = T)
+      x<-hsfile
+    }
   }else{
     library(parallel)
-    cluster <- parallel::makeCluster(do.parallel)
-    parallel::clusterExport(cl = cluster, varlist=ls("package:CoExpansionValidation"))
-    x<-parallel::parSapply(cluster, X = 1:npod, fx, conf,time.range,buffer,prefix,BayeSSCallocation,write.reference.file)
-    parallel::stopCluster(cluster)
-
+    file.collect.inc<-max(do.parallel,10)
+    file.round<-ceiling(npod / file.collect.inc)
+    for( file.collect.rep in 1:file.round){
+      start.podn<-(file.collect.rep-1)*file.collect.inc+1
+      end.podn<-min(file.collect.rep*file.collect.inc,npod)
+      cluster <- parallel::makeCluster(do.parallel)
+      parallel::clusterExport(cl = cluster, varlist=ls("package:CoExpansionValidation"))
+      x<-parallel::parSapply(cluster, X = start.podn:end.podn, fx, conf,time.range,buffer,concentrationscale,concentrationShape,prefix,BayeSSCallocation,write.reference.file)
+      parallel::stopCluster(cluster)
+      if(write.reference.file==T){
+        files<-sapply(x,function(fname){l<-unlist(scan(fname,what="character",sep="\n"))})
+        unlink(x)
+        hsfile<-paste0(prefix,"_reference_table")
+        cat(paste0(files,collapse = "\n"),file = hsfile,append = T)
+        x<-hsfile
+      }else{
+        if(file.collect.rep==1){
+          y<-x
+        }else{
+          y<-cbind(y,x)
+        }
+      }
+      #print("collected one set of result\n")
+    }
+    if(write.reference.file==F){x<-y}
   }
   if(write.reference.file==F){
     x<-t(x)
