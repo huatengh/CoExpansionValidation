@@ -64,7 +64,7 @@ ABC_simulation_uniform<-function(npod,conf,time.range,buffer=0,prefix='temp',Bay
     }
   }else{
     library(parallel)
-    file.collect.inc<-max(do.parallel,10)
+    file.collect.inc<-max(do.parallel,1000)
     file.round<-ceiling(npod / file.collect.inc)
     for( file.collect.rep in 1:file.round){
       start.podn<-(file.collect.rep-1)*file.collect.inc+1

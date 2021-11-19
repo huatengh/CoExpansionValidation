@@ -62,11 +62,12 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
       unlink(x)
       hsfile<-paste0(prefix,"_reference_table")
       cat(paste0(files,collapse = "\n"),file = hsfile,append = T)
+      cat("\n",file = hsfile,append = T)
       x<-hsfile
     }
   }else{
     library(parallel)
-    file.collect.inc<-max(do.parallel,10)
+    file.collect.inc<-max(do.parallel,1000)
     file.round<-ceiling(npod / file.collect.inc)
     for( file.collect.rep in 1:file.round){
       start.podn<-(file.collect.rep-1)*file.collect.inc+1
@@ -80,6 +81,7 @@ ABC_simulation_with_conf<-function(npod,conf,time.range,buffer=0,concentrationsc
         unlink(x)
         hsfile<-paste0(prefix,"_reference_table")
         cat(paste0(files,collapse = "\n"),file = hsfile,append = T)
+        cat("\n",file = hsfile,append = T)
         x<-hsfile
       }else{
         if(file.collect.rep==1){
